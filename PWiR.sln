@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PWiR_6", "PWiR_6\PWiR_6.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PWiR_7", "PWiR_7\PWiR_7.csproj", "{545580EC-B960-4F2D-B06C-15244542AECD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PWiR_8", "PWiR_8\PWiR_8.csproj", "{6F943CB1-F7C8-484D-97EE-03D10165A565}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{545580EC-B960-4F2D-B06C-15244542AECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{545580EC-B960-4F2D-B06C-15244542AECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{545580EC-B960-4F2D-B06C-15244542AECD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F943CB1-F7C8-484D-97EE-03D10165A565}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F943CB1-F7C8-484D-97EE-03D10165A565}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F943CB1-F7C8-484D-97EE-03D10165A565}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F943CB1-F7C8-484D-97EE-03D10165A565}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
