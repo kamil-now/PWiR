@@ -45,6 +45,11 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Przyklad_1.cs" />
+    <Compile Include="Przyklad_2.cs" />
+    <Compile Include="Przyklad_3.cs" />
+    <Compile Include="Przyklad_4.cs" />
+    <Compile Include="Zadanie_2.cs" />
     <Compile Include="Zadanie_1.cs" />
   </ItemGroup>
   <ItemGroup>

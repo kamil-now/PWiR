@@ -7,7 +7,7 @@ namespace PWiR_8
     {
         const int ileWatkow = 10;
         //static Barrier b = new Barrier(ileWatkow);
-        //static Barrier b = new Barrier(ileWatkow, (Barrier b)=> { Console.WriteLine(); });  // Klasa Barrier umozliwia okreslenia dzialania jakie ma byc wykonane po kazdej fazie
+        static Barrier b = new Barrier(ileWatkow, (Barrier b)=> { Console.WriteLine(); });  // Klasa Barrier umozliwia okreslenia dzialania jakie ma byc wykonane po kazdej fazie
 
         public static void RUN()
         {
@@ -16,7 +16,7 @@ namespace PWiR_8
                 for (char znak = 'A'; znak <= 'G'; znak++)
                 {
                     Console.Write(znak);
-                    //b.SignalAndWait();
+                    b.SignalAndWait();
                 }
             };
             Thread[] tab = new Thread[ileWatkow];
