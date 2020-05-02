@@ -7,7 +7,7 @@ namespace PWiR_8
     {
         const int ileWatkow = 10;
         //static Barrier b = new Barrier(ileWatkow);
-        static Barrier b = new Barrier(ileWatkow, (Barrier b)=> { Console.WriteLine(); });  // Klasa Barrier umozliwia okreslenia dzialania jakie ma byc wykonane po kazdej fazie
+        static readonly Barrier b = new Barrier(ileWatkow, (Barrier b) => Console.WriteLine());  // Klasa Barrier umożliwia określenie działania jakie ma być wykonane po każdej fazie
 
         public static void RUN()
         {

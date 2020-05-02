@@ -11,14 +11,20 @@ namespace PWiR_8
         {
             PriorityTest priorityTest = new PriorityTest();
 
-            Thread w1 = new Thread(priorityTest.ThreadMethod);
-            w1.Name = "Watek1";
-            Thread w2 = new Thread(priorityTest.ThreadMethod);
-            w2.Name = "Watek2";
-            w2.Priority = ThreadPriority.Lowest;
-            Thread w3 = new Thread(priorityTest.ThreadMethod);
-            w3.Name = "Watek3";
-            w3.Priority = ThreadPriority.Highest;
+            Thread w1 = new Thread(priorityTest.ThreadMethod)
+            {
+                Name = "Watek1"
+            };
+            Thread w2 = new Thread(priorityTest.ThreadMethod)
+            {
+                Name = "Watek2",
+                Priority = ThreadPriority.Lowest
+            };
+            Thread w3 = new Thread(priorityTest.ThreadMethod)
+            {
+                Name = "Watek3",
+                Priority = ThreadPriority.Highest
+            };
 
             w1.Start();
             w2.Start();

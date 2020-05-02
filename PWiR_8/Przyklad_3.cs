@@ -7,17 +7,19 @@ namespace PWiR_8
     {
         public static void RUN()
         {
-            List<String> imiona = new List<String>();
-            imiona.Add("Ania");
-            imiona.Add("Janusz");
-            imiona.Add("Tomek");
-            imiona.Add("Robert");
+            List<string> imiona = new List<string>
+            {
+                "Ania",
+                "Janusz",
+                "Tomek",
+                "Robert"
+            };
 
-            // Sposob 1: Uzycie ForEach z u¿yciem metody Pisz.
+            // Sposób 1: Uzycie ForEach z użyciem metody Pisz.
             imiona.ForEach(Pisz);
 
-            // Sposob 2: Uzycie ForEach z wyra¿eniem lambda
-            imiona.ForEach(imie => { Console.WriteLine(imie); });
+            // Sposób 2: Uzycie ForEach z wyrażeniem lambda
+            imiona.ForEach(imie => Console.WriteLine(imie));
             Console.ReadKey();
         }
         private static void Pisz(string s)

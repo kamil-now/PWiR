@@ -12,9 +12,8 @@ namespace PWiR_8
             Action a1 = () =>
             {
                 Console.WriteLine("Start zadania nr {0}", Task.CurrentId);
-                // SpinWait wykonuje rzeczywiste operacje obci¹¿aj¹ce procesor 
-                // (nie usypia w¹tku jak Sleep). Wymaga using System.Threading;
-                Thread.SpinWait(new Random().Next(10000000));
+                // SpinWait wykonuje rzeczywiste operacje obciążające procesor (nie usypia wątku jak Sleep). Wymaga using System.Threading;
+                Thread.SpinWait(new Random().Next(10000000)); 
                 Console.WriteLine("Koniec zadania nr {0}", Task.CurrentId);
             };
 
