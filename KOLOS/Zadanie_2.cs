@@ -12,23 +12,8 @@ namespace KOLOS
         static void Main(string[] args)
         {
             var path = $@"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\liczby_zaprzyjaznione.csv";
-
-            var max = 600000;
-            var iloscLiczb = 12;
-            Action tmp = () =>
-            {
-                var liczby = ZnajdzLiczbyZaprzyjaznione(max);
-                lock (_lck)
-                {
-                    Console.WriteLine($"Znaleziono {liczby.Count} liczb zaprzyjaźnionych");
-                }
-                CsvReaderWriter.Write(path, liczby.Select(x => new string[] { x.a.ToString(), x.b.ToString() }).ToList(), false);
-                lock (_lck)
-                {
-                    Console.WriteLine($"Liczby zapisano do pliku {path}");
-                    CsvReaderWriter.ReadAndPrint(path);
-                }
-            }; tmp();
+            var max = 6000;
+            var iloscLiczb = 5;
             var t1 = new Task(() =>
             {
                 var liczby = ZnajdzLiczbyZaprzyjaznione(max);
@@ -40,17 +25,18 @@ namespace KOLOS
                 lock (_lck)
                 {
                     Console.WriteLine($"Liczby zapisano do pliku {path}");
-                    CsvReaderWriter.ReadAndPrint(path);
+                    // CsvReaderWriter.ReadAndPrint(path);
+                    Console.ReadKey();
                 }
             });
             var t2 = new Task(() =>
             {
+                var liczby = new List<int>();
                 lock (_lck)
                 {
-                    var liczby = new List<int>();
                     do
                     {
-                        Console.WriteLine("Wprowadź liczbę");
+                        Console.WriteLine("Wprowadź kolejną liczbę");
                         var input = Console.ReadLine();
 
                         if (int.TryParse(input, out int liczba))
@@ -59,7 +45,10 @@ namespace KOLOS
                         }
 
                     } while (liczby.Count < iloscLiczb);
-                    var odchylenie = ObliczOdchylenieStandardowe(liczby);
+                }
+                var odchylenie = ObliczOdchylenieStandardowe(liczby);
+                lock (_lck)
+                {
                     Console.WriteLine($"Odchylenie standardowe dla {string.Join(", ", liczby.ToArray())} = {odchylenie}");
                 }
             });
@@ -70,28 +59,16 @@ namespace KOLOS
         static List<(int a, int b)> ZnajdzLiczbyZaprzyjaznione(int max)
         {
             var liczby = new List<(int, int)>();
-            Parallel.For(0, max, i =>
+            for (int i = 1; i < max; i++)
             {
                 for (int j = 1; j < max; j++)
                 {
-                    if (i != j && SumaDzielnikow(i) == SumaDzielnikow(j))
+                    if (i != j && SumaDzielnikow(i) == j && SumaDzielnikow(j) == i)
                     {
                         liczby.Add((i, j));
-                        Console.WriteLine($"{i}, {j}");
                     }
                 }
-            });
-            //for (int i = 1; i < max; i++)
-            //{
-            //    for (int j = 1; j < max; j++)
-            //    {
-            //        if (i != j && SumaDzielnikow(i) == SumaDzielnikow(j))
-            //        {
-            //            liczby.Add((i, j));
-            //            Console.WriteLine($"{i}, {j}");
-            //        }
-            //    }
-            //}
+            }
             return liczby;
 
         }

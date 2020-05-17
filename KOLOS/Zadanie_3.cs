@@ -1,56 +1,33 @@
 ﻿//using System;
-//using System.Collections.Generic;
-//using System.IO;
+//using System.Threading.Tasks;
 
 //namespace KOLOS
 //{
 //    class Program
 //    {
+//        static readonly Random _rand = new Random();
 //        static void Main(string[] args)
 //        {
-//            var path = @"C:\Users\Kamil\Desktop\Programowanie współbieżne i rozproszone\tmp.csv";
-//            var content = CsvReaderWriter.Read(path);
-//            CsvReaderWriter.Write(path, content, false);
-//            CsvReaderWriter.ReadAndPrint(path);
+//            var count = 10000;
+//            var a = InitWithRandom(count, -5, 5);
+//            var b = InitWithRandom(count, 1, 15);
+
+//            Console.WriteLine($"a = {string.Join(", ", a)}");
+//            Console.WriteLine($"b = {string.Join(", ", b)}");
+//            Console.WriteLine($"Iloczyn skalarny a i b = {IloczynSkalarny(a, b)}");
 //            Console.ReadKey();
 //        }
-//    }
-//    class CsvReaderWriter
-//    {
-//        public static List<string[]> Read(string path)
+//        static int IloczynSkalarny(int[] a, int[] b)
 //        {
-//            var list = new List<string[]>();
-//            using (var reader = new StreamReader(path))
-//            {
-//                while (!reader.EndOfStream)
-//                {
-//                    var line = reader.ReadLine();
-//                    list.Add(line.Split(','));
-//                }
-//            }
-//            return list;
+//            var suma = 0;
+//            Parallel.For(0, a.Length, i => suma += a[i] * b[i]);
+//            return suma;
 //        }
-//        public static void ReadAndPrint(string path)
+//        static int[] InitWithRandom(int count, int min, int max)
 //        {
-//            var content = Read(path);
-//            foreach (var row in content)
-//            {
-//                Console.WriteLine(string.Join(" ", row));
-//            }
-//        }
-//        public static void Write(string path, List<string[]> content, bool append)
-//        {
-//            using (var writer = new StreamWriter(path, append))
-//            {
-//                if(content.Count > 0 && new FileInfo(path).Length == 0)
-//                {
-//                    writer.WriteLine();
-//                }
-//                foreach (var row in content)
-//                {
-//                    writer.WriteLine(string.Join(",", row));
-//                }
-//            }
+//            var tab = new int[count];
+//            Parallel.For(0, count, i => tab[i] = _rand.Next(min, max));
+//            return tab;
 //        }
 //    }
 //}
